@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/rnka084aih4dmlrl?svg=true)](https://ci.appveyor.com/project/Tasilia/dz2-4)
