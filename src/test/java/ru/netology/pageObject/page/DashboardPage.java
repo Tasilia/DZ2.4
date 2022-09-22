@@ -21,7 +21,7 @@ public class DashboardPage {
     }
 
     public int getCardBalance(DataHelper.Card card) {
-        String text = findHelper(card).getText();
+        String text = cards.findBy(Condition.attribute("data-test-id", card.getId())).getText();
         return extractBalance(text);
     }
 
@@ -32,28 +32,9 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    private SelenideElement findHelper(DataHelper.Card card) {
-        String text = "Error";
-        SelenideElement findCard = $("");
-        while (true) {
-            for (SelenideElement element : cards) {
-                if (element.getAttribute("data-test-id").equals(card.getId())) {
-                    findCard = element;
-                    text = "OK";
-                    break;
-                }
-            }
-            break;
-        }
-        if (text == "Error") {
-            throw new RuntimeException("Данная карта не найдена");
-        } else {
-            return findCard;
-        }
-    }
-
     public DashboardPageV2 deposit(DataHelper.Card card) {
-        findHelper(card).findElement(By.cssSelector("button")).click();
+        cards.findBy(Condition.attribute("data-test-id", card.getId()))
+                .findElement(By.cssSelector("button")).click();
         ;
         return new DashboardPageV2();
     }

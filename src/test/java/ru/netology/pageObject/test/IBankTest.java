@@ -49,7 +49,6 @@ public class IBankTest {
         var balance2 = dashboardPage.getCardBalance(card2);
         var dashboardPageV2 = dashboardPage.deposit(card1);
         String amount = Integer.toString(balance2 / 2);
-        ;
         var dashboardPageAgain = dashboardPageV2.cardReplenishment(amount, card2);
         var actual = dashboardPageAgain.getCardBalance(card1);
         var actual2 = dashboardPageAgain.getCardBalance(card2);
@@ -68,17 +67,9 @@ public class IBankTest {
         var dashboardPage = verificationPage.validVerify(verificationCode);
         var card1 = DataHelper.getCardInfo(authInfo);
         var card2 = DataHelper.getOtherCardInfo(authInfo);
-        var balance1 = dashboardPage.getCardBalance(card1);
         var balance2 = dashboardPage.getCardBalance(card2);
         var dashboardPageV2 = dashboardPage.deposit(card1);
         String amount = Integer.toString(balance2 + 2);
-        ;
-        var dashboardPageAgain = dashboardPageV2.cardReplenishment(amount, card2);
-        var actual = dashboardPageAgain.getCardBalance(card1);
-        var actual2 = dashboardPageAgain.getCardBalance(card2);
-        var expected = balance1 + balance2;
-        var expected2 = 0;
-        Assertions.assertEquals(expected, actual);
-        Assertions.assertEquals(expected2, actual2);
+        dashboardPageV2.cardReplenishmentError(amount, card2);
     }
 }
