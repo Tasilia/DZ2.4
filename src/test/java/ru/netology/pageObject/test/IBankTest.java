@@ -26,7 +26,7 @@ public class IBankTest {
         var balance1 = dashboardPage.getCardBalance(card1);
         var balance2 = dashboardPage.getCardBalance(card2);
         var dashboardPageV2 = dashboardPage.deposit(card2);
-        String amount = Integer.toString(balance1 / 2);
+        String amount = Integer.toString(Math.abs(balance1) / 2);
         var dashboardPageAgain = dashboardPageV2.cardReplenishment(amount, card1);
         var actual = dashboardPageAgain.getCardBalance(card1);
         var actual2 = dashboardPageAgain.getCardBalance(card2);
@@ -48,7 +48,7 @@ public class IBankTest {
         var balance1 = dashboardPage.getCardBalance(card1);
         var balance2 = dashboardPage.getCardBalance(card2);
         var dashboardPageV2 = dashboardPage.deposit(card1);
-        String amount = Integer.toString(balance2 / 2);
+        String amount = Integer.toString(Math.abs(balance2) / 2);
         var dashboardPageAgain = dashboardPageV2.cardReplenishment(amount, card2);
         var actual = dashboardPageAgain.getCardBalance(card1);
         var actual2 = dashboardPageAgain.getCardBalance(card2);
